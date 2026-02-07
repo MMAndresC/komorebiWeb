@@ -1,3 +1,6 @@
+import Link from 'next/link';
+
+
 export default function SchoolCard({ school }) {
     return (
       <Link href={`/schools/${school.id}`}>
