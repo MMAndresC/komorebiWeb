@@ -4,14 +4,16 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { School } from "@/app/types";
 
-
 export default function SchoolDetailPage() {
   const { query } = useRouter();
   const [school, setSchool] = useState<School | null>(null);
+  const [isMounted, setIsMounted] = useState(false); 
 
   useEffect(() => {
-    if (!query.id) return; 
-    
+    setIsMounted(true); 
+
+    if (!query.id) return;
+
     const fetchSchoolData = async () => {
       const res = await fetch(`/api/schools/${query.id}`);
       if (res.ok) {
@@ -25,7 +27,13 @@ export default function SchoolDetailPage() {
     fetchSchoolData();
   }, [query.id]);
 
-  if (!school) return <p>Cargando...</p>;
+  if (!isMounted || !query.id) {
+    return <p>Loading...</p>;
+  }
+
+  if (!school) {
+    return <p>School not found.</p>;
+  }
 
   return (
     <main className="p-6 max-w-3xl mx-auto">
