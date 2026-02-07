@@ -8,10 +8,11 @@ export default function ProjectList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8081/projects")
+    fetch("/api/projects")
       .then(res => res.json())
       .then(data => {
         setProjects(data);
+        console.log(data);
         setLoading(false);
       })
       .catch(err => {

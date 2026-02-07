@@ -8,7 +8,7 @@ export default function SchoolList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8081/schools")
+    fetch("/api/schools")
       .then(res => res.json())
       .then(data => {
         setSchool(data);
