@@ -1,6 +1,9 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { School } from "@/app/types";
+
 
 export default function SchoolDetailPage() {
   const { query } = useRouter();
