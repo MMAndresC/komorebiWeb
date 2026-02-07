@@ -12,6 +12,7 @@ export default function ProjectList() {
       .then(res => res.json())
       .then(data => {
         setProjects(data);
+        console.log(data);
         setLoading(false);
       })
       .catch(err => {
